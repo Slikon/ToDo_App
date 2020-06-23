@@ -17,13 +17,13 @@ $(document).ready(() => {
 
       return false;
 
-  });
+  })
 
   $('li').on('click', () => {
-      var item = $(this).text().trim().replace(/\ /g, "-");
+      let item = $(this).text().trim().replace(/ /g, "-");
       $.ajax({
         type: 'DELETE',
-        url: '/todo/' + item,
+        url: `/todo/ + ${item}`,
         success: (data) => {
           //do something with the data via front-end framework
           location.reload();
