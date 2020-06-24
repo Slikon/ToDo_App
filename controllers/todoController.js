@@ -1,5 +1,24 @@
 let bodyParser = require('body-parser')
 const e = require('express')
+let mongoose = require('mongoose')
+const dotenv = require('dotenv')
+dotenv.config()
+
+//connect to MongoDB database
+mongoose.connect(process.env.mongo_connect)
+
+let todoSchema = new mongoose.Schema({
+    item: String
+})
+
+let Todo = mongoose.model('Todo', todoSchema)
+
+let todoOne = Todo({
+    item: 'buy milk'
+}).save((err) => {
+    if (err) throw err;
+    console.log('item saved')
+})
 
 let data = [{item: 'get milk'}, {item: 'walk dog'}, {item: 'Play wow'}]
 let urlencodedParser = bodyParser.urlencoded({ extended: false})
