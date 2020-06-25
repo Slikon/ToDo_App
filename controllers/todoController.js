@@ -5,7 +5,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 //connect to MongoDB database
-mongoose.connect(process.env.mongo_connect)
+mongoose.connect(process.env.mongo_connect, { useUnifiedTopology: true, useNewUrlParser: true })
 
 let todoSchema = new mongoose.Schema({
     item: String
